@@ -1,0 +1,78 @@
+    body {
+        background-color:#0b0c10;
+        color:#c0f7fa;
+        font-family:'Georgia', serif;
+        text-align:center;
+        padding:50px;
+    }
+    h1{
+        font-size:2.5em;
+        margin-bottom:0.2em;
+        color:#00e5ff;
+    }
+    p{
+        font-style:italic;
+        margin-bottom:2em;
+        color:#80deea;
+    }
+    button{
+        background:#1f2833;
+        color:#66fcf1;
+        border:2px solid #45a29e;
+        padding:50px;
+        font-size:1em;
+        cursor:pointer;
+        border-radius:8px
+        transition:all 0.3s ease;
+    }
+    button:hover{
+        background:#45a29e;
+        color:#060c10;
+    }
+    #messageDisplay{
+        margin-top:30px;
+        font-size:1.2em;
+        color:#f1faee;
+    }
+
+    @keyframes fadein {
+        from{opacity:0;}
+        to{opacity:1;}
+    }
+
+    @keyframes glow {
+       0%{
+        text-shadow:0 0 5px #00e5ff, 0 0 10px #00e5ff;
+       }
+       50%{
+        text-shadow:0 0 20px #00e5ff, 0 0 40px #00e5ff;
+       }
+       100%{
+        text-shadow:0 0 5px #00e5ff, 0 0 10px #00e5ff;
+       }
+    }
+    @keyframes softGlow{
+        0%{filter:drop-shadow(0 0 4px rgba(255,255,255,0.2));}
+        50%{filter:drop-shadow(0 0 12px rgba(255,255,255,0.8));}
+        100%{filter:drop-shadow(0 0 4px rgba(255,255,255,0.2));}
+    }
+    .sigil{
+        display:block;
+        margin:0 auto;
+        max-width: 750px;
+        margin-top:10px;
+        animation:fadeIn 5s ease;
+        filter:drop-shadow(0 0 8px #a10f0fc5);
+        animation:softGlow 5s infinite ease-in-out;
+    }
+    
+
+    #messageDisplay{
+        margin-top:30px;
+        font-size:1.2em;
+        color:#f1faee;
+        opacity:0;
+        transition:opacity 0.5s ease;
+        text-shadow:0 0 10px #00e5ff,0 0 20px #00e5ff,0 0 30px #00e5ff;
+        animation: none;
+    }
