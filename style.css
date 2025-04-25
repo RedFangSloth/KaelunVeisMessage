@@ -58,7 +58,7 @@
        max-width:700px;
        margin:20px auto;
        filter:drop-shadow(0 0 20px #00ffcc);
-       animation:softGlow 4s infinite;
+       animation:glow 4s infinite;
        display:block;
     }
     
