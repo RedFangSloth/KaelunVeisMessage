@@ -35,19 +35,26 @@ h1 {
 }
 
 /* Dream Journal Container */
+/* Dream Journal Container */
 .dream-journal-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
+/* Dream Input Container */
 .dream-input-container {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center; /* Centers the input box horizontally */
+    flex-direction: column; /* Ensures the button stacks below the input */
+    align-items: center; /* Aligns items in the center */
 }
 
 .dream-input {
     width: 100%;
-    min-height: 150px; /* Set a min-height so it's still usable on mobile */
+    max-width: 600px; /* You can adjust this width as per your design */
+    min-height: 150px;
     padding: 15px;
     border-radius: 8px;
     background-color: #1f2833;
@@ -57,16 +64,12 @@ h1 {
     box-shadow: 0 0 10px #00e5ff;
     transition: all 0.3s ease;
     box-sizing: border-box;
-    resize: none;  /* Disable manual resizing */
-    overflow-y: auto;  /* Ensure scroll appears when necessary */
+    resize: none;
+    overflow-y: auto;
+    text-align: center; /* Centers the text inside the input box */
 }
 
-/* Focus effect for text input */
-.dream-input:focus {
-    outline: none;
-    box-shadow: 0 0 20px #00e5ff;
-}
-
+/* Save Button Styling */
 .save-btn {
     background-color: #45a29e;
     color: #060c10;
@@ -77,12 +80,15 @@ h1 {
     font-size: 1.2em;
     transition: all 0.3s ease;
     margin-top: 15px;
+    width: 100%; /* Make button stretch full width */
+    max-width: 600px; /* Ensure it doesn't grow too wide */
 }
 
 .save-btn:hover {
     background-color: #00e5ff;
     color: #060c10;
 }
+
 
 .saved-dreams {
     font-size: 1.1em;
