@@ -178,16 +178,53 @@ h1 {
         max-width: 80%;
     }
 
-    #messageButton {
-        width: 100%;
-        font-size: 1em;
-        padding: 12px 0;
-    }
+/* Receive Message Button Styling */
+#messageButton {
+    background-color: #45a29e;
+    color: #060c10;
+    padding: 15px 30px;
+    border: 2px solid #45a29e;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 600px; /* Keeps the button consistent with the Save button */
+    margin-top: 20px; /* Adds some space above the button */
+}
 
-    #messageDisplay {
-        font-size: 1em;
-        padding: 15px;
+/* Hover effect for Receive Message button */
+#messageButton:hover {
+    background-color: #00e5ff;
+    color: #060c10;
+}
+
+
+  /* Glowing text effect for messages */
+#messageDisplay {
+    font-size: 1em;
+    padding: 15px;
+    color: #f1faee;
+    background-color: #1f2833;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00e5ff;
+    text-align: center;
+    animation: glowText 1.5s ease-in-out infinite; /* Add glowing animation */
+}
+
+/* Glowing animation */
+@keyframes glowText {
+    0% {
+        text-shadow: 0 0 5px #00e5ff, 0 0 10px #00e5ff;
     }
+    50% {
+        text-shadow: 0 0 20px #00e5ff, 0 0 40px #00e5ff;
+    }
+    100% {
+        text-shadow: 0 0 5px #00e5ff, 0 0 10px #00e5ff;
+    }
+}
+
 
     /* Clear button styling */
     .clear-btn {
