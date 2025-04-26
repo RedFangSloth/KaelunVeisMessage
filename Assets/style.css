@@ -46,9 +46,8 @@ h1 {
 }
 
 .dream-input {
-    width: 80%;
-    height: 150px;
-    margin-top: 20px;
+    width: 100%;
+    min-height: 150px; /* Set a min-height so it's still usable on mobile */
     padding: 15px;
     border-radius: 8px;
     background-color: #1f2833;
@@ -57,9 +56,12 @@ h1 {
     font-size: 1.2em;
     box-shadow: 0 0 10px #00e5ff;
     transition: all 0.3s ease;
-    box-sizing: border-box; /* Ensures padding doesn’t affect the width */
+    box-sizing: border-box;
+    resize: none;  /* Disable manual resizing */
+    overflow-y: auto;  /* Ensure scroll appears when necessary */
 }
 
+/* Focus effect for text input */
 .dream-input:focus {
     outline: none;
     box-shadow: 0 0 20px #00e5ff;
@@ -142,11 +144,8 @@ h1 {
 
     /* Adjust text area for mobile */
     .dream-input {
-        width: 100%;          /* Full width */
-        max-width: 100%;       /* Ensures no overflow */
-        height: auto;          /* Adjusts height based on content */
-        font-size: 1.1em;      /* Slightly smaller font size */
-        padding: 12px;         /* Adjust padding for smaller screens */
+        font-size: 1.1em;
+        padding: 12px;
     }
 
     /* Adjust save button for mobile */
