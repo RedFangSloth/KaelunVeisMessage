@@ -43,8 +43,25 @@ function displaySavedDreams(dreams) {
     }
 }
 
+// Clear the saved dreams from both localStorage and the page
+function clearSavedDreams() {
+    // Clear saved dreams in localStorage
+    localStorage.removeItem('dreams');
+
+    // Clear the display on the page
+    const savedDreamsContainer = document.getElementById('savedDreams');
+    savedDreamsContainer.innerHTML = '<p>No dreams saved yet.</p>';
+
+    // Optional: You can display a confirmation message or alert
+    alert("Saved dreams cleared.");
+}
+
 // Load saved dreams from localStorage when the page loads
 window.onload = function() {
     const savedDreams = JSON.parse(localStorage.getItem('dreams')) || [];
     displaySavedDreams(savedDreams);
 };
+
+// Add event listener to the clear button
+const clearButton = document.getElementById("clearButton");
+clearButton.addEventListener("click", clearSavedDreams);
