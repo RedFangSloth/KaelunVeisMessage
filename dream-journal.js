@@ -1,67 +1,61 @@
-// Save the dream to localStorage and display it on the page
-function saveDream() {
-    const dreamInput = document.getElementById('dreamEntry');
-    const dreamText = dreamInput.value.trim();
+document.addEventListener('DOMContentLoaded', function() {
+    const saveButton = document.getElementById('saveButton');
+    const clearButton = document.getElementById('clearButton');
+    const savedDreamsContainer = document.getElementById('savedDreams');
 
-    if (dreamText) {
-        // Get saved dreams from localStorage
-        let savedDreams = JSON.parse(localStorage.getItem('dreams')) || [];
+    // Check if there are saved dreams in localStorage
+    function loadSavedDreams() {
+        const savedDreams = JSON.parse(localStorage.getItem('dreams')) || [];
+        
+        // Clear current displayed dreams
+        savedDreamsContainer.innerHTML = '';
 
-        // Add new dream to the array
-        savedDreams.push(dreamText);
+        if (savedDreams.length === 0) {
+            // Show "No dreams recorded yet" message if no dreams are saved
+            const noDreamsMessage = document.createElement('p');
+            noDreamsMessage.id = 'noDreamsMessage';
+            noDreamsMessage.textContent = 'No dreams recorded yet';
+            savedDreamsContainer.appendChild(noDreamsMessage);
+        } else {
+            // Otherwise, display the saved dreams
+            savedDreams.forEach(dream => {
+                const dreamElement = document.createElement('p');
+                dreamElement.textContent = dream;
+                savedDreamsContainer.appendChild(dreamElement);
+            });
+        }
+    }
 
-        // Save the updated array back to localStorage
+    // Save a new dream to localStorage
+    function saveDream() {
+        const dreamInput = document.getElementById('dreamInput').value;
+
+        if (dreamInput.trim() === '') {
+            alert('Please write a dream before saving!');
+            return;
+        }
+
+        const savedDreams = JSON.parse(localStorage.getItem('dreams')) || [];
+        savedDreams.push(dreamInput);
         localStorage.setItem('dreams', JSON.stringify(savedDreams));
 
-        // Update the display
-        displaySavedDreams(savedDreams);
+        // Clear the input field after saving
+        document.getElementById('dreamInput').value = '';
 
-        // Clear the text input after saving
-        dreamInput.value = '';
-    } else {
-        alert('Please write something before saving!');
+        // Reload the saved dreams
+        loadSavedDreams();
     }
-}
 
-// Display the saved dreams on the page
-function displaySavedDreams(dreams) {
-    const savedDreamsContainer = document.getElementById('savedDreams');
-
-    // Clear the current list of saved dreams
-    savedDreamsContainer.innerHTML = '';
-
-    // If there are no dreams saved, show a message
-    if (dreams.length === 0) {
-        savedDreamsContainer.innerHTML = '<p>No dreams saved yet.</p>';
-    } else {
-        // Otherwise, display all saved dreams
-        dreams.forEach(dream => {
-            const dreamElement = document.createElement('p');
-            dreamElement.textContent = dream;
-            savedDreamsContainer.appendChild(dreamElement);
-        });
+    // Clear all saved dreams
+    function clearDreams() {
+        localStorage.removeItem('dreams');
+        loadSavedDreams();
     }
-}
 
-// Clear the saved dreams from both localStorage and the page
-function clearSavedDreams() {
-    // Clear saved dreams in localStorage
-    localStorage.removeItem('dreams');
+    // Event listeners for saving and clearing dreams
+    saveButton.addEventListener('click', saveDream);
+    clearButton.addEventListener('click', clearDreams);
 
-    // Clear the display on the page
-    const savedDreamsContainer = document.getElementById('savedDreams');
-    savedDreamsContainer.innerHTML = '<p>No dreams saved yet.</p>';
-
-    // Optional: You can display a confirmation message or alert
-    alert("Saved dreams cleared.");
-}
-
-// Load saved dreams from localStorage when the page loads
-window.onload = function() {
-    const savedDreams = JSON.parse(localStorage.getItem('dreams')) || [];
-    displaySavedDreams(savedDreams);
-};
-
-// Add event listener to the clear button
-const clearButton = document.getElementById("clearButton");
-clearButton.addEventListener("click", clearSavedDreams);
+    // Load saved dreams on page load
+    loadSavedDreams();
+});
