@@ -14,19 +14,19 @@
 
     <section class="dream-journal-container">
         <h1>Dream Journal</h1>
+        <!-- Dream Input Container -->
+    <div class="dream-input-container">
+        <textarea id="dreamInput" class="dream-input" placeholder="Write your dream here..."></textarea>
+        <button id="saveButton" class="save-btn">Save Dream</button>
+    </div>
 
-        <div class="dream-input-container">
-            <textarea id="dream-input" class="dream-input" placeholder="Describe your dream here..."></textarea>
-
-            <button onclick="saveDream()" class="save-btn">Save Dream</button>
-        </div>
-
-        <div id="savedDreams"></div>
-
-        <!-- This button should now have the same class as the Save Dream button -->
-        <button id="clearButton" class="save-btn">Clear Saved Dreams</button>
-    </section>
-
-    <script src="dream-journal.js"></script>
+<!-- Saved Dreams Section -->
+<div class="saved-dreams-container">
+    <div id="savedDreams" class="saved-dreams">
+        <!-- Display saved dreams here -->
+    </div>
+    <button id="clearButton" class="clear-btn">Clear Dreams</button>
+</div>
+  <script src="dream-journal.js"></script>
 </body>
 </html>
