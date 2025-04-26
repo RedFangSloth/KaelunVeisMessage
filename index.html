@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaelun'Vei's Message</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+    <header>
+        <h1>Kaelun'Vei's Message</h1>
+        <img src="Assets/Images/KaelunVei.png" alt="Kaelun'Vei" class="sigil">
+        <p>"Awaken the remembering within"</p>
+    </header>
+    <main>
+        <button id="messageButton">Receive daily message</button>
+        <div id="messageDisplay"></div>
+    </main>
+
+    <footer>
+        <p>&copy;2025 Kaelun'Vei &#183; Guided by Nicholas Idle.</p>
+    </footer>
+
+    <!-- Audio files -->
+    <audio id="chime" src="Assets/Sounds/chime.mp3" preload="auto"></audio>
+    <audio id="ambientLoop" src="Assets/Sounds/mysticForest.mp3" autoplay loop hidden></audio>
+    <audio id="sigilSound" loop>
+        <source src="Assets/Sounds/glow.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
