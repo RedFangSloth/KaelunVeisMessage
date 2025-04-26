@@ -113,7 +113,7 @@ h1 {
     }
 }
 
-/* Adjustments for mobile */
+/* Mobile adjustments */
 @media (max-width: 768px) {
     body {
         padding: 20px;
@@ -158,63 +158,7 @@ h1 {
     }
 }
 
-/* Styling for Kaelun'Vei's Message Page */
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.sigil {
-    max-width: 300px;
-    height: auto;
-    margin: 20px 0;
-}
-
-#messageButton {
-    background-color: #45a29e;
-    color: #060c10;
-    font-size: 1.2em;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    border: 2px solid #45a29e;
-    transition: background-color 0.3s ease;
-    display: block; /* Ensures the button takes full width of its container */
-    margin: 0 auto 20px; /* Centers button and adds space below it */
-}
-
-#messageButton:hover {
-    background-color: #00e5ff;
-    color: #060c10;
-}
-
-/* Adjusted style for message display */
-/* Initially hide the message box */
-#messageDisplay {
-    display: none; /* Keep it hidden by default */
-    color: #f1faee;
-    font-size: 1.2em;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    box-shadow: 0 0 10px #00e5ff;
-    display: inline-block;
-    max-width: 90%;
-    word-wrap: break-word;
-    margin-bottom: 30px;
-}
-
-
-
-/* Footer */
-footer {
-    margin-top: 30px;
-    color: #66fcf1;
-    font-size: 1em;
-}
-
-/* Additional media query for smaller screens */
+/* Smaller screens adjustments */
 @media (max-width: 480px) {
     h1 {
         font-size: 2em;
@@ -236,21 +180,20 @@ footer {
     }
 
     /* Clear button styling */
-.clear-btn {
-    background-color: #e84545; /* Red background */
-    color: white;
-    padding: 15px 30px;
-    border: 2px solid #e84545;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.2em;
-    transition: all 0.3s ease;
-    margin-top: 20px;
-}
+    .clear-btn {
+        background-color: #e84545;
+        color: white;
+        padding: 15px 30px;
+        border: 2px solid #e84545;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.2em;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+    }
 
-.clear-btn:hover {
-    background-color: #ff4d4d; /* Darker red when hovered */
-    color: #060c10;
-}
-
+    .clear-btn:hover {
+        background-color: #ff4d4d;
+        color: #060c10;
+    }
 }
