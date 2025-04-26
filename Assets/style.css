@@ -161,11 +161,26 @@ h1 {
         padding: 12px 0;
     }
 
-    .saved-dreams {
-        max-height: 250px;
-        padding-right: 10px;
-        font-size: 1em;
-    }
+    /* Style for dream timestamp */
+/* Style for dream entries */
+.saved-dreams div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.saved-dreams span {
+    font-size: 0.9em;
+    color: #888;
+    margin-right: 10px;
+}
+
+.saved-dreams p {
+    margin: 0;
+    padding: 0;
+}
+
+
 }
 
 /* Smaller screens adjustments */
