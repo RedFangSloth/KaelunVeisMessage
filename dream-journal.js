@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const clearButton = document.getElementById('clearButton');
     const savedDreamsContainer = document.getElementById('savedDreams');
 
+    // Format the date to MM/DD/YYYY
+    function formatDate(date) {
+        const month = date.getMonth() + 1; // getMonth() returns 0-11
+        const day = date.getDate();
+        const year = date.getFullYear();
+        return `${month}/${day}/${year}`;
+    }
+
     // Check if there are saved dreams in localStorage
     function loadSavedDreams() {
         const savedDreams = JSON.parse(localStorage.getItem('dreams')) || [];
@@ -17,10 +25,22 @@ document.addEventListener('DOMContentLoaded', function() {
             noDreamsMessage.textContent = 'No dreams recorded yet';
             savedDreamsContainer.appendChild(noDreamsMessage);
         } else {
-            // Otherwise, display the saved dreams
+            // Otherwise, display the saved dreams with timestamps
             savedDreams.forEach(dream => {
-                const dreamElement = document.createElement('p');
-                dreamElement.textContent = dream;
+                const dreamElement = document.createElement('div');
+                const dreamContent = document.createElement('div');
+                const timestampText = document.createElement('span');
+                const dreamText = document.createElement('p');
+                
+                // Format the timestamp
+                timestampText.textContent = formatDate(new Date(dream.timestamp));
+                dreamText.textContent = dream.text;
+                
+                // Add timestamp and dream text to the container
+                dreamContent.appendChild(timestampText);
+                dreamContent.appendChild(dreamText);
+                dreamElement.appendChild(dreamContent);
+
                 savedDreamsContainer.appendChild(dreamElement);
             });
         }
@@ -36,7 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const savedDreams = JSON.parse(localStorage.getItem('dreams')) || [];
-        savedDreams.push(dreamInput);
+        const newDream = {
+            text: dreamInput,
+            timestamp: new Date().toISOString() // Capture the current date and time
+        };
+        savedDreams.push(newDream);
         localStorage.setItem('dreams', JSON.stringify(savedDreams));
 
         // Clear the input field after saving
