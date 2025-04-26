@@ -199,8 +199,7 @@ h1 {
     color: #060c10;
 }
 
-
-  /* Glowing text effect for messages */
+/* Glowing text effect for messages */
 #messageDisplay {
     font-size: 1em;
     padding: 15px;
@@ -209,8 +208,11 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 0 10px #00e5ff;
     text-align: center;
-    animation: glowText 1.5s ease-in-out infinite; /* Add glowing animation */
+    animation: glowText 1.5s ease-in-out infinite;
+    margin-top: 20px; /* Adds space above the message display */
+    margin-bottom: 20px; /* Add margin to the bottom of the message display for spacing */
 }
+
 
 /* Glowing animation */
 @keyframes glowText {
