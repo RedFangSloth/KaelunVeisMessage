@@ -11,6 +11,16 @@ const messages = [
     "You are the universe experiencing itself from another angle.",
     "The universe doesn't speak in words, but in rhythm. Feel the pulse within!",
     "Light travels in thought before it moves in space, so choose what you think wisely.",
+    "We are not human beings having a spiritual experience. We are spiritual beings, having a human experience. --Pierre Teilhard de Chardin.",
+    "You do not need to work to become spiritual. You are spiritual; you need to remember that fact. --Gary Zukav",
+    "The soul always knows what to do to heal itself. The challenge is to silence the mind. --Caroline Nyss",
+    "The best and most beautiful things in the world cannot be seen or even touched- they must be felt with the heart. --Helen Keller",
+    "When you realize nothing is lacking, the whole world belongs to you. --LAO TZU",
+    "Have faith that things will work out. Maybe not how you planned, but how they were meant to be.",
+    "The ego gets what it wants with words. The soul finds what it needs in silence.",
+    "You find peace not by rearranging the circumstances of your life, but by realizing who you are at the deepest level. --Eckhart Tolle ",
+    "The spiritual journey is not about becoming someone else. It is about becoming more of who you are.",
+    "Every moment is a fresh beginning. --T.S. Eliot",
 ];
 
 // Get the elements
