@@ -111,6 +111,72 @@ h1 {
     word-wrap: break-word; /* Ensure text wraps correctly */
 }
 
+/* Pulse glow animation */
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.6);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.7);
+        transform: scale(1.1);
+    }
+    100% {
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.6);
+        transform: scale(1);
+    }
+}
+
+/* For fading in and out of the message */
+@keyframes floatFade {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* For the sigil to animate */
+.sigil {
+    transition: all 0.3s ease-in-out;
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Glow effect for the message display */
+#messageDisplay {
+    font-size: 1.2em;
+    color: #fff;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    opacity: 0;
+    display: none;
+}
+
+/* Style for the buttons */
+.record-btn {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.record-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+audio {
+    display: block;
+    margin-top: 10px;
+}
+
+
 /* Glowing animation for the header */
 @keyframes glow {
     0% {
@@ -254,3 +320,90 @@ audio {
     display: block;
     margin-top: 10px;
 }
+
+/* Container for the message and button */
+/* Container for the message and button */
+.message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;  /* Ensure it takes full screen height */
+    text-align: center;
+    position: relative;
+    padding-bottom: 50px;  /* Adds space at the bottom for the button */
+}
+
+/* Style for the receive message button */
+.receive-message-btn {
+    background: linear-gradient(145deg, #00e5ff, rgb(189, 226, 229));  /* Gradient background */
+    color: white;
+    font-size: 1.5rem;  /* Slightly larger text */
+    font-weight: bold;
+    padding: 20px 40px;  /* Increased padding for larger button */
+    border-radius: 50px;  /* Rounded edges */
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);  /* Soft shadow */
+    margin-top: 30px;  /* Adds a gap from the message */
+}
+
+.receive-message-btn:hover {
+    transform: scale(1.1);  /* Larger hover effect */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);  /* Stronger shadow on hover */
+    background: linear-gradient(145deg, #ff0, #f00);  /* Reverse the gradient for visual effect */
+}
+
+/* Message box style */
+.message-box {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 80%;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Glowing effect for the sigil */
+#sigil {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+
+/* Message box style */
+.message-box {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: 80%;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
