@@ -13,34 +13,50 @@ const messages = [
     "Light travels in thought before it moves in space, so choose what you think wisely.",
 ];
 
-const button = document.getElementById("messageButton");
-const display = document.getElementById("messageDisplay");
+// Get the elements
+const messageButton = document.getElementById("messageButton");
+const messageDisplay = document.getElementById("messageDisplay");
 const chime = new Audio("Assets/Sounds/chime.wav");
 const ambient = new Audio("Assets/Sounds/mysticForest.mp3");
 const sigil = document.querySelector('.sigil');
 const sigilSound = document.getElementById('sigilSound');
 
-
-
 // Play ambient sound once user interacts (due to autoplay policy)
-button.addEventListener("click", () => {
+let ambientPlayed = false;
+
+messageButton.addEventListener("click", () => {
+    // When the button is clicked, display the message box
+    messageDisplay.style.display = "inline-block";  // or "block" depending on your preference
+
+    // Play the ambient sound only once
+    if (!ambientPlayed) {
+        ambient.play().catch(e => console.log('Ambient play blocked:', e));
+        ambientPlayed = true;
+    }
+
+    // Play the sigil sound immediately
+    sigilSound.play().catch(e => console.log('Sigil sound play blocked:', e));
+
     const randomIndex = Math.floor(Math.random() * messages.length);
 
     // Fade out the current message
-    display.style.animation = "fadeOut 1.5s ease";
-    display.style.opacity = 0;
+    messageDisplay.style.animation = "fadeOut 1.5s ease";
+    messageDisplay.style.opacity = 0;
 
     setTimeout(() => {
         // Change the message
-        display.textContent = messages[randomIndex];
+        messageDisplay.textContent = messages[randomIndex];
 
         // Play the chime sound
         chime.currentTime = 0;
         chime.play().catch(e => console.log('Chime play blocked:', e));
 
         // Fade in the new message + restore pulse glow
-        display.style.animation = "floatFade 1.5s ease, pulseGlow 4s ease-in-out infinite";
-        display.style.opacity = 1;
+        messageDisplay.style.animation = "floatFade 1.5s ease, pulseGlow 4s ease-in-out infinite";
+        messageDisplay.style.opacity = 1;
+
+        // Sigil animation for glow and pulse
+        sigil.style.animation = "pulseGlow 2s ease-in-out infinite";
+
     }, 1500); // matches fadeOut duration
 });
-
