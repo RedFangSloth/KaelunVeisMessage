@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Journal</title>
+    <link rel="stylesheet" href="Assets/style.css"/>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dream-journal.html">Dream Journal</a>
+        <a href="horoscope.html">Daily Horoscopes</a>
+    </nav>
+
+    <header>
+        <h1>Dream Journal</h1>
+        <p>Document your dreams and unlock their secrets ✨</p>
+    </header>
+
+    <main>
+        <form id="dreamForm">
+            <label for="dreamTitle">Dream Title:</label>
+            <input type="text" id="dreamTitle" placeholder="Give your dream a title" required>
+
+            <label for="dreamDescription">Dream Description:</label>
+            <textarea id="dreamDescription" placeholder="Describe your dream..." rows="6" required></textarea>
+
+            <button type="submit">Save Dream</button>
+        </form>
+
+        <div id="dreamEntries" class="message-box">
+            <!-- Dream entries will appear here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy;2025 Kaelun'Vei &#183; Guided by Nicholas Idle.</p>
+    </footer>
+
+    <script src="dream-journal.js"></script>
+</body>
+</html>

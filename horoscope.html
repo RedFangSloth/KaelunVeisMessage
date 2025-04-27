@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Horoscopes</title>
+    <link rel="stylesheet" href="Assets/style.css"/>
+</head>
+
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="dream-journal.html">Dream Journal</a>
+        <a href="horoscope.html">Daily Horoscopes</a>
+    </nav>
+
+    <header>
+        <h1>Daily Horoscopes</h1>
+        <p>Find your cosmic guidance for today 🌟</p>
+    </header>
+
+    <main>
+        <select id="horoscopeSelector">
+            <option value="">Select Your Sign</option>
+            <option value="aries">Aries</option>
+            <option value="taurus">Taurus</option>
+            <option value="gemini">Gemini</option>
+            <option value="cancer">Cancer</option>
+            <option value="leo">Leo</option>
+            <option value="virgo">Virgo</option>
+            <option value="libra">Libra</option>
+            <option value="scorpio">Scorpio</option>
+            <option value="sagittarius">Sagittarius</option>
+            <option value="capricorn">Capricorn</option>
+            <option value="aquarius">Aquarius</option>
+            <option value="pisces">Pisces</option>
+        </select>
+        
+        <button id="getHoroscope">Get Horoscope</button>
+        
+        <div id="horoscopeDisplay" class="message-box"></div>
+        
+    </main>
+
+    <footer>
+        <p>&copy;2025 Kaelun'Vei &#183; Guided by Nicholas Idle.</p>
+    </footer>
+
+    <script src="horoscope.js"></script>
+
+</body>
+</html>
