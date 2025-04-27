@@ -82,4 +82,72 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Load saved dreams on page load
     loadSavedDreams();
+
+    // In dream-journal.js or a separate JS file
+
+let mediaRecorder;
+let audioChunks = [];
+
+// Get the start and stop buttons
+const startRecordingButton = document.getElementById('startRecording');
+const stopRecordingButton = document.getElementById('stopRecording');
+
+// Event listener to start recording
+startRecordingButton.addEventListener('click', () => {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+        .then((stream) => {
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.start();
+
+            // Disable the start button and enable the stop button
+            startRecordingButton.disabled = true;
+            stopRecordingButton.disabled = false;
+
+            // Collect audio data as it's recorded
+            mediaRecorder.ondataavailable = (event) => {
+                audioChunks.push(event.data);
+            };
+
+            // When recording stops, create a Blob from the audio data
+            mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                
+                // You can now save the audio URL in the saved dreams or upload it
+                saveAudioRecording(audioUrl);
+                
+                // Reset the audioChunks array for the next recording
+                audioChunks = [];
+            };
+        })
+        .catch((err) => {
+            console.log('Error accessing the microphone: ', err);
+        });
+});
+
+// Event listener to stop recording
+stopRecordingButton.addEventListener('click', () => {
+    mediaRecorder.stop();
+
+    // Disable the stop button and enable the start button
+    startRecordingButton.disabled = false;
+    stopRecordingButton.disabled = true;
+});
+
+// Function to save the audio recording (or display it as a link)
+function saveAudioRecording(audioUrl) {
+    // Create an audio element to preview the recording or save it as a link
+    const audioElement = document.createElement('audio');
+    audioElement.controls = true;
+    audioElement.src = audioUrl;
+
+    // Save the audio with the current timestamp or dream entry
+    const savedDreamsContainer = document.getElementById('savedDreams');
+    const audioEntry = document.createElement('div');
+    const timestamp = new Date().toLocaleString();
+    audioEntry.innerHTML = `<strong>Audio Dream - ${timestamp}</strong><br />`;
+    audioEntry.appendChild(audioElement);
+    savedDreamsContainer.appendChild(audioEntry);
+}
+
 });
