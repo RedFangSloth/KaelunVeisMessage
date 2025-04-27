@@ -51,7 +51,6 @@ const messages = [
     "Be patient and trust that guidance will come when the time is right.",
     "Gratitude for guidance received opens the door for more.",
 ];
-];
 
 // Get the elements
 const messageButton = document.getElementById("messageButton");
