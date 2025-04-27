@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Body Styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #121212;
@@ -14,6 +14,7 @@ body {
     overflow: hidden;
 }
 
+/* Header Styles */
 header {
     font-size: 2.5em;
     margin-bottom: 20px;
@@ -21,6 +22,7 @@ header {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
+/* Main Content Area */
 main {
     display: flex;
     flex-direction: column;
@@ -28,6 +30,7 @@ main {
     justify-content: center;
 }
 
+/* Select and Button Styling */
 select, button {
     font-size: 1.2em;
     margin: 15px;
@@ -40,11 +43,13 @@ select, button {
     transition: all 0.3s ease-in-out;
 }
 
+/* Hover Effects */
 select:hover, button:hover {
     background: #7b1fa2;
     transform: scale(1.1);
 }
 
+/* Horoscope Display Box */
 #horoscopeDisplay {
     font-size: 1.5em;
     margin-top: 20px;
@@ -60,11 +65,88 @@ select:hover, button:hover {
     text-shadow: 0 0 10px #e91e63, 0 0 15px #e91e63;
 }
 
-/* Optional - Hover effect for button and select box */
+/* Optional: Focused Input Effects */
 select:focus, button:focus {
     outline: none;
     border: 2px solid #e91e63;
 }
+
+/* Pulse Glow Animation */
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 0 0 10px #e91e63, 0 0 15px #e91e63, 0 0 20px #e91e63;
+    }
+    50% {
+        text-shadow: 0 0 20px #e91e63, 0 0 25px #e91e63, 0 0 30px #e91e63;
+    }
+    100% {
+        text-shadow: 0 0 10px #e91e63, 0 0 15px #e91e63, 0 0 20px #e91e63;
+    }
+}
+
+#horoscopeDisplay.glowing {
+    animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Make header smaller for mobile */
+    header {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    /* Adjust select and button size */
+    select, button {
+        font-size: 1.1em;
+        padding: 8px;
+    }
+
+    /* Adjust horoscope display size */
+    #horoscopeDisplay {
+        font-size: 1.3em;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further adjust header for very small screens */
+    header {
+        font-size: 1.8em;
+        margin-bottom: 5px;
+    }
+
+    /* Adjust select and button size */
+    select, button {
+        font-size: 1em;
+        padding: 6px;
+    }
+
+    /* Adjust horoscope display size */
+    #horoscopeDisplay {
+        font-size: 1.1em;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    /* Further adjustments for ultra small screens (e.g., phones in portrait) */
+    body {
+        font-size: 0.9em;
+        padding: 0 10px;
+    }
+
+    select, button {
+        font-size: 0.9em;
+        padding: 5px;
+    }
+
+    #horoscopeDisplay {
+        font-size: 1em;
+        padding: 8px;
+    }
+}
+
 
 nav {
     display: flex;
