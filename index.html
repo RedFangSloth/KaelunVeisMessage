@@ -1,0 +1,39 @@
+<body>
+
+    <!-- Navigation Buttons -->
+    <nav>
+        <button onclick="showSection('messageSection')">Kaelun'Vei's Message</button>
+        <button onclick="showSection('dreamJournalSection')">Dream Journal</button>
+        <button onclick="showSection('horoscopeSection')">Daily Horoscope</button>
+    </nav>
+
+    <!-- Kaelun'Vei's Message -->
+    <section id="messageSection" class="page-section">
+            <h1>Kaelun'Vei's Message</h1>
+            <div id="messageDisplay">
+                <p>✨ You are on the path of remembering. Trust your expansion. ✨</p>
+            </div>
+            <button id="messageButton" onclick="refreshMessage()">Refresh Message</button>
+        </section>
+
+    <!-- Dream Journal -->
+    <section id="dreamJournalSection" class="page-section" style="display:none;">
+        <h1>Dream Journal</h1>
+        <!-- Dream journal content goes here -->
+    </section>
+
+    <!-- Daily Horoscope -->
+    <section id="horoscopeSection" class="page-section" style="display:none;">
+        <h1>Daily Horoscope</h1>
+        <!-- Horoscope content goes here -->
+    </section>
+	
+	<style>
+    #messageDisplay {
+        transition: opacity 0.5s ease;
+    }
+</style>
+
+
+    <script src="script.js"></script>
+</body>
