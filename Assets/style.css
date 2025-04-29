@@ -224,7 +224,7 @@ form #getHoroscopeButton {
 }
 
 /* Horoscope and Dream Entries Box */
-#horoscopeDisplay, #dreamList {
+#horoscopeDisplay {
   font-size: 1.5em;
   margin-top: 20px;
   padding: 20px;
@@ -237,6 +237,14 @@ form #getHoroscopeButton {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
   display: none;
+}
+#dreamList{
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 20px 0;
+  display:block;
+  
 }
 /* Mobile Responsive Tweaks */
 @media (max-width: 600px) {
@@ -318,21 +326,37 @@ form #getHoroscopeButton {
   justify-content: space-between;
 }
 
-/* Left column (input) & Right column (list) */
-.dream-input-area,
+/* Left column: input + buttons */
+.dream-input-area {
+  flex: 1 1 300px;
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Right column: saved list */
 .dream-list-area {
-  flex: 1 1 300px;   /* allow wrapping on narrow screens */
+  flex: 1 1 300px;
   max-width: 45%;
 }
 
-/* On mobile, stack them */
+/* Tuck buttons under the textarea, centered */
+.dream-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* On narrow screens, stack them instead of side-by-side */
 @media (max-width: 600px) {
   #dreamJournalSection {
     flex-direction: column;
   }
-  .dream-input-area,
-  .dream-list-area {
+  .dream-input-area, .dream-list-area {
     max-width: 100%;
   }
 }
+
 
