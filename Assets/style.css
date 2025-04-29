@@ -1,287 +1,267 @@
+/* Light Mode Variables (Default) */
+:root {
+  --background-color: #f5f5f5;
+  --text-color: #2b2b2b;
+  --accent-dark: #d4af37; /* gold */
+  --accent-mid: #c0c0c0;  /* silver */
+  --primary: #d4af37;
+  --primary-hover: #b89d32;
+  --button-bg: #e0e0e0;
+  --nav-bg: #ffffff;
+  --shadow-light: 0 0 10px #999;
+  --shadow-bright: 0 0 20px rgba(0, 0, 0, 0.1);
+  --font-family: 'Arial', sans-serif;
+  --input-bg: #ffffff;
+  --input-hover-bg: #f0f0f0;
+  --input-border: #d4af37;
+  --highlight-glow: 0 0 8px #ffd700, 0 0 16px #ffd700, 0 0 24px #ffd700;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --background-color: #0e0e0e;
+  --text-color: #ffffff;
+  --accent-dark: #4A148C; /* deep purple */
+  --accent-mid: #00bcd4;  /* bright cyan */
+  --primary: #4A148C;
+  --primary-hover: #7b1fa2;
+  --button-bg: #272727;
+  --nav-bg: #333;
+  --shadow-light: 0 0 10px #5f5f5f;
+  --shadow-bright: 0 0 20px rgba(255, 255, 255, 0.8);
+  --input-bg: #2a0d4b;
+  --input-hover-bg: #7b1fa2;
+  --input-border: #4A148C;
+  --highlight-glow: 0 0 8px #00ffe0, 0 0 16px #00ffe0, 0 0 24px #00ffe0;
+}
+
+
 /* General reset */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: #0e0e0e;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* <== CENTER horizontally */
-    min-height: 100vh;
-    text-align: center; /* optional, for text */
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
 /* Navigation Bar */
 nav {
-    background: #333;
-    display: flex;
-	flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-	margin: 20px 0;
+  background: var(--nav-bg);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin: 20px 0;
 }
 
 nav button {
-    background-color: #1f1f1f;
-    border: none;
-    padding: 15px 25px;
-    margin: 5px;
-    font-size: 18px;
-    border-radius: 8px;
-    color: #ffffff;
-    cursor: pointer;
-    box-shadow: 0 0 10px #5f5f5f;
-    transition: background-color 0.3s, transform 0.3s;
+  background-color: var(--accent-dark);
+  border: none;
+  padding: 15px 25px;
+  margin: 5px;
+  font-size: 18px;
+  border-radius: 8px;
+  color: var(--text-color);
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 nav button:hover {
-    background-color: #3f3f3f;
-    transform: scale(1.05);
+  background-color: var(--accent-mid);
+  transform: scale(1.05);
 }
 
 /* Section Setup */
 .page-section {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Kaelun'Vei's Message */
 #messageDisplay {
-    margin: 20px 0;
-    font-size: 22px;
-    line-height: 1.6;
-    transition: opacity 0.5s ease;
-    align-items: center;
+  margin: 20px 0;
+  font-size: 22px;
+  line-height: 1.6;
+  transition: opacity 0.5s ease;
+  align-items: center;
 }
 
 /* Refresh Button */
 #messageButton {
-    background-color: #272727;
-    border: none;
-    padding: 12px 20px;
-    font-size: 18px;
-    border-radius: 6px;
-    color: #ffffff;
-    cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 0 0 8px #5f5f5f;
-    align-items: center;
+  background-color: var(--button-bg);
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: var(--text-color);
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: var(--shadow-light);
+  align-items: center;
 }
 
 #messageButton:hover {
-    background-color: #444;
+  background-color: var(--accent-mid);
 }
 
 /* Sigil */
 #sigil {
-    width: 150px;
-    height: auto;
-    margin-top: 20px;
-    filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #00ffff);
+  width: 150px;
+  height: auto;
+  margin-top: 20px;
+  filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #00ffff);
 }
 
 /* Glow effect for important items */
 .glow {
-    text-shadow: 0 0 8px #00ffe0, 0 0 16px #00ffe0, 0 0 24px #00ffe0;
+  text-shadow: var(--highlight-glow);
 }
 
 /* Header Styles */
 header {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #e0e0e0;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 /* Main Content Area */
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 20px;
 }
 
 /* Form Styles for Dream Journal and Horoscope */
 form {
-    background: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-bright);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Form Label Styles */
 form label {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-    display: block;
-    color: #fff;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  display: block;
+  color: var(--text-color);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-/* Input, Textarea, and Select Styles */
 form input, form textarea, form select {
-    font-size: 1.1em;
-    padding: 12px;
-    width: 100%;
-    margin-bottom: 15px;
-    border: 2px solid #4A148C;
-    border-radius: 10px;
-    background: #2a0d4b;
-    color: white;
-    box-shadow: 0 0 10px #7b1fa2;
-    transition: all 0.3s ease-in-out;
-    outline: none;
+  font-size: 1.1em;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 15px;
+  border: 2px solid var(--input-border);
+  border-radius: 10px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  box-shadow: 0 0 10px var(--primary-hover);
+  transition: all 0.3s ease-in-out;
+  outline: none;
 }
 
-/* Hover Effects for Input Fields and Select */
 form input:hover, form textarea:hover, form select:hover {
-    background: #7b1fa2;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #fff;
+  background: var(--input-hover-bg);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #fff;
 }
 
-/* Button Styles */
-form button {
-    font-size: 1.2em;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    background: #4A148C;
-    color: white;
-    box-shadow: 0 0 10px #fff;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
+/* Form Buttons */
+form button, #getHoroscopeButton {
+  font-size: 1.2em;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--text-color);
+  box-shadow: 0 0 10px #fff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  width: 100%;
 }
 
-/* Button Hover Effect */
-form button:hover {
-    background: #7b1fa2;
-    transform: scale(1.1);
+form button:hover, #getHoroscopeButton:hover {
+  background: var(--primary-hover);
+  transform: scale(1.1);
+}
+
+form #getHoroscopeButton {
+  margin-top: 15px;
 }
 
 /* Horoscope and Dream Entries Box */
 #horoscopeDisplay, #dreamEntries {
-    font-size: 1.5em;
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 15px;
-    background: rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    width: 100%;
-    max-width: 600px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    display: none;
+  font-size: 1.5em;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: var(--shadow-bright);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: none;
 }
 
 /* Dream Entry Styling */
 .dream-entry {
-    background: rgba(0, 0, 0, 0.5);
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    transition: background 0.3s ease-in-out;
+  background: rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: background 0.3s ease-in-out;
 }
 
 .dream-entry:hover {
-    background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
-/* Media Queries for Mobile Responsiveness */
+/* Mobile Responsive Tweaks */
 @media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-    }
-    nav button {
-        margin: 5px 0;
-    }
+  nav {
+    flex-direction: column;
+  }
+  nav button {
+    margin: 5px 0;
+  }
 }
 
-/* Smaller Devices */
 @media (max-width: 480px) {
-    header {
-        font-size: 1.5em;
-    }
-
-    form input, form textarea, form select {
-        font-size: 1em;
-        padding: 8px;
-    }
-
-    form button {
-        font-size: 1.1em;
-        padding: 8px 15px;
-    }
-}
-/* Style for Horoscope Dropdown */
-form select#horoscopeSelector {
+  header {
+    font-size: 1.5em;
+  }
+  form input, form textarea, form select {
+    font-size: 1em;
+    padding: 8px;
+  }
+  form button {
     font-size: 1.1em;
-    padding: 12px;
-    width: 100%;
-    margin-bottom: 15px;
-    border: 2px solid #4A148C;
-    border-radius: 10px;
-    background: #2a0d4b;
-    color: white;
-    box-shadow: 0 0 10px #7b1fa2;
-    transition: all 0.3s ease-in-out;
-    outline: none;
-    text-align: center;
+    padding: 8px 15px;
+  }
 }
-
-/* Hover Effect for Horoscope Dropdown */
-form select#horoscopeSelector:hover {
-    background: #7b1fa2;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #fff;
-}
-
-/* Focused State Styling for Horoscope Dropdown */
-form select#horoscopeSelector:focus {
-    border-color: #fff;
-    background: #4A148C;
-    color: #121212;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-}
-
-
-/* Get Horoscope Button Style */
-#getHoroscopeButton {
-    font-size: 1.2em;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 10px;
-    background: #4A148C;
-    color: white;
-    box-shadow: 0 0 10px #fff;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    width: 100%; /* Ensure it fits well with the select dropdown */
-}
-
-/* Get Horoscope Button Hover Effect */
-#getHoroscopeButton:hover {
-    background: #7b1fa2;
-    transform: scale(1.1);
-}
-/* Space between dropdown and Get Horoscope button */
-form #getHoroscopeButton {
-    margin-top: 15px; /* Adjust the space as needed */
-}
-
