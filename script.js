@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="Assets/style.css">
+    
 document.addEventListener('DOMContentLoaded', function() {
     const messages = [
         	"You are a reflection of stars long past -- remember your fire",
