@@ -20,6 +20,7 @@
         <button onclick="showSection('messageSection')">Kaelun'Vei's Message</button>
         <button onclick="showSection('dreamJournalSection')">Dream Journal</button>
         <button onclick="showSection('horoscopeSection')">Daily Horoscope</button>
+		<button id="toggleTheme">Toggle Theme</button>
     </nav>
 
     <!-- Sections -->
@@ -33,11 +34,16 @@
             <button id="messageButton" onclick="refreshMessage()">Refresh Message</button>
         </section>
 
-        <!-- Dream Journal -->
-        <section id="dreamJournalSection" class="page-section" style="display:none;">
-            <h2>Dream Journal</h2>
-            <p>Record your dreams here soon!</p>
-        </section>
+	<!-- Dream Journal -->
+	<section id="dreamJournalSection" class="page-section" style="display:none;">
+		<h2>Dream Journal</h2>
+		<textarea id="dreamText" rows="5" placeholder="Write your dream here..." style="width: 90%; max-width: 600px; padding: 10px; border-radius: 8px; background: #333; color: #ddd; border: none;"></textarea>
+		<br>
+		<button id="saveDreamButton" style="margin-top: 10px;">Save Dream</button>
+		<ul id="dreamList" style="list-style-type: none; padding: 0; margin-top: 20px;"></ul>
+	</section>
+
+
 
         <!-- Daily Horoscope -->
         <section id="horoscopeSection" class="page-section" style="display:none;">
@@ -45,36 +51,6 @@
             <p>Your astrological insights will appear here!</p>
         </section>
     </main>
-
-    <style>
-        body {
-            font-family: 'Verdana', sans-serif;
-            background: #222;
-            color: #ddd;
-            margin: 0;
-        }
-        button {
-            background: #444;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            color: #fff;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 8px;
-            transition: background 0.3s ease;
-        }
-        button:hover {
-            background: #666;
-        }
-        #messageDisplay {
-            transition: opacity 0.5s ease;
-            background: #333;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-        }
-    </style>
 
     <script src="script.js"></script>
 </body>
