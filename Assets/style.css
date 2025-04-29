@@ -303,3 +303,36 @@ form #getHoroscopeButton {
   background-color:var(--button-bg);
 
 }
+.timestamp {
+  display: block;
+  font-size: 0.9em;
+  color: var(--accent-mid);
+  margin-bottom: 4px;
+}
+/* Dream Journal: two columns */
+#dreamJournalSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Left column (input) & Right column (list) */
+.dream-input-area,
+.dream-list-area {
+  flex: 1 1 300px;   /* allow wrapping on narrow screens */
+  max-width: 45%;
+}
+
+/* On mobile, stack them */
+@media (max-width: 600px) {
+  #dreamJournalSection {
+    flex-direction: column;
+  }
+  .dream-input-area,
+  .dream-list-area {
+    max-width: 100%;
+  }
+}
+
