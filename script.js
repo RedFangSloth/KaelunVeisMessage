@@ -57,20 +57,30 @@ const saveDreamButton = document.getElementById('saveDreamButton');
 const dreamText = document.getElementById('dreamText');
 const dreamList = document.getElementById('dreamList');
 
-// Load saved dreams from localStorage
+
+// Load Dreams 
 function loadDreams() {
-    const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
-    dreamList.innerHTML = '';
+  const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
+  dreamList.innerHTML = '';
+
+  if (dreams.length === 0) {
+    // show default li
+    dreamList.innerHTML = `
+      <li class="default-message">
+        No dreams recorded yet
+      </li>
+    `;
+  } else {
+    // render each dream
     dreams.forEach(dream => {
-        const li = document.createElement('li');
-        li.textContent = dream;
-        li.style.background = '#333';
-        li.style.margin = '10px 0';
-        li.style.padding = '10px';
-        li.style.borderRadius = '8px';
-        dreamList.appendChild(li);
+      const li = document.createElement('li');
+      li.textContent = dream;
+      li.classList.add('dream-entry');
+      dreamList.appendChild(li);
     });
+  }
 }
+
 
 // Save a new dream
 function saveDream() {
@@ -133,6 +143,8 @@ loadDreams();
   } 	else {
 		document.body.setAttribute('data-theme', 'dark');
   }
+  
+  
   
 });
 });
