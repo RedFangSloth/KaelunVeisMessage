@@ -6,7 +6,7 @@
   --accent-mid: #c0c0c0;  /* silver */
   --primary: #d4af37;
   --primary-hover: #b89d32;
-  --button-bg: #e0e0e0;
+  --button-bg: #d4af37;
   --nav-bg: #ffffff;
   --shadow-light: 0 0 10px #999;
   --shadow-bright: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -25,7 +25,7 @@
   --accent-mid: #00bcd4;  /* bright cyan */
   --primary: #4A148C;
   --primary-hover: #7b1fa2;
-  --button-bg: #272727;
+  --button-bg: #4A148C;
   --nav-bg: #333;
   --shadow-light: 0 0 10px #5f5f5f;
   --shadow-bright: 0 0 20px rgba(255, 255, 255, 0.8);
@@ -81,14 +81,6 @@ nav button:hover {
   transform: scale(1.05);
 }
 
-/* Section Setup */
-.page-section {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* Kaelun'Vei's Message */
 #messageDisplay {
   margin: 20px 0;
@@ -96,6 +88,10 @@ nav button:hover {
   line-height: 1.6;
   transition: opacity 0.5s ease;
   align-items: center;
+  margin-top: 20px;
+  box-shadow: var(--shadow-light);
+  padding: 12px 15px;
+  background-color:var(--button-bg);
 }
 
 /* Refresh Button */
@@ -129,6 +125,19 @@ nav button:hover {
   text-shadow: var(--highlight-glow);
 }
 
+#saveDreamButton {
+  background-color: var(--button-bg);
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: var(--text-color);
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: var(--shadow-light);
+  align-items: center;
+}
+
 /* Header Styles */
 header {
   font-size: 2.5em;
@@ -143,8 +152,10 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 20px;
+  
 }
 
 /* Form Styles for Dream Journal and Horoscope */
@@ -213,12 +224,12 @@ form #getHoroscopeButton {
 }
 
 /* Horoscope and Dream Entries Box */
-#horoscopeDisplay, #dreamEntries {
+#horoscopeDisplay, #dreamList {
   font-size: 1.5em;
   margin-top: 20px;
   padding: 20px;
   border-radius: 15px;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(237, 224, 175, 0.7);
   box-shadow: var(--shadow-bright);
   width: 100%;
   max-width: 600px;
@@ -227,21 +238,6 @@ form #getHoroscopeButton {
   transition: opacity 0.5s ease-in-out;
   display: none;
 }
-
-/* Dream Entry Styling */
-.dream-entry {
-  background: rgba(0, 0, 0, 0.5);
-  margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  transition: background 0.3s ease-in-out;
-}
-
-.dream-entry:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
 /* Mobile Responsive Tweaks */
 @media (max-width: 600px) {
   nav {
@@ -264,4 +260,46 @@ form #getHoroscopeButton {
     font-size: 1.1em;
     padding: 8px 15px;
   }
+}
+
+/* pop-in keyframes */
+@keyframes popIn {
+  0%   { transform: scale(0.8); opacity: 0; }
+  60%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Base styling for each dream item */
+#dreamList li {
+  width: 100%;
+  list-style: none;
+  margin: 10px 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background: var(--highlight-glow);
+  font-size: 1.1em;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2);
+  animation: popIn 0.4s ease-out both;
+}
+
+/* Highlight the default-message differently */
+#dreamList li.default-message {
+  background: #444;
+  color: #ffd700;          /* golden text */
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px rgba(255,215,0,0.6);
+}
+#dreamText{
+  margin: 20px 0;
+  font-size: 22px;
+  line-height: 1.6;
+  transition: opacity 0.5s ease;
+  align-items: center;
+  margin-top: 20px;
+  box-shadow: var(--shadow-light);
+  padding: 12px 15px;
+  background-color:var(--button-bg);
+
 }
