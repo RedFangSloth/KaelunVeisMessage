@@ -1,171 +1,362 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const messages = [
-        "You are a reflection of stars long past -- remember your fire.",
-        "What you call coincidence is a ripple from your true path.",
-        "Silence holds the truth Kaelun'Vei whispers to you.",
-        "Today is not just a day -- it's a doorway.",
-        "Your shadow is not your enemy. It's your guardian.",
-        "The veil thins every time you choose presence.",
-        "There is no such thing as 'Lost' -- only remembering.",
-        "You were chosen to carry frequency. Let it sing through you.",
-        "Understanding is knowledge.",
-        "You are the universe experiencing itself from another angle.",
-        "The universe doesn't speak in words, but in rhythm. Feel the pulse within!",
-        "Light travels in thought before it moves in space, so choose what you think wisely.",
-        "We are not human beings having a spiritual experience. We are spiritual beings, having a human experience. --Pierre Teilhard de Chardin",
-        "You do not need to work to become spiritual. You are spiritual; you need to remember that fact. --Gary Zukav",
-        "The soul always knows what to do to heal itself. The challenge is to silence the mind. --Caroline Nyss",
-        "The best and most beautiful things in the world cannot be seen or even touched- they must be felt with the heart. --Helen Keller",
-        "When you realize nothing is lacking, the whole world belongs to you. --LAO TZU",
-        "Have faith that things will work out. Maybe not how you planned, but how they were meant to be.",
-        "The ego gets what it wants with words. The soul finds what it needs in silence.",
-        "You find peace not by rearranging the circumstances of your life, but by realizing who you are at the deepest level. --Eckhart Tolle",
-        "The spiritual journey is not about becoming someone else. It is about becoming more of who you are.",
-        "Every moment is a fresh beginning. --T.S. Eliot",
-        "Trust your intuition. It is the voice of your soul.",
-        "The answers you seek lie within. Still the mind and listen.",
-        "Follow the quiet whispers of your heart; they will guide you true.",
-        "Your inner compass always points you in the right direction, even when the path ahead is unclear.",
-        "The soul knows the way, even when the mind is lost.",
-        "Faith is not knowing what the future holds, but knowing who holds the future.",
-        "Trust the process of life; everything unfolds in divine timing.",
-        "When you surrender to the flow, guidance will naturally arise.",
-        "Have faith in the journey, even when you cannot see the destination.",
-        "The present moment is where your guidance resides. Be fully here.",
-        "In the stillness, you will hear the gentle voice of guidance.",
-        "Pay attention to the small moments; they often hold profound direction.",
-        "When you are present, you are open to receive.",
-        "Guidance often comes in the quiet moments, not the frantic ones.",
-        "Every challenge is an opportunity for spiritual growth and deeper understanding.",
-        "Embrace the lessons along the path; they are guiding you towards your higher self.",
-        "Transformation often requires us to step outside our comfort zone, trusting that we will be guided.",
-        "The journey inward is the journey towards true guidance.",
-        "Allow yourself to be guided by love, not fear.",
-        "We are all interconnected, and guidance can often come through others.",
-        "Seek wisdom from those who walk with light and love.",
-        "Remember that you are never truly alone; guidance is always available.",
-        "The universe conspires to guide you when your heart is open.",
-        "Through connection, we find clarity and shared wisdom.",
-        "Ask, and it will be given to you; seek, and you will find; knock, and the door will be open to you.",
-        "Be open to receiving guidance in unexpected forms.",
-        "The more you seek, the clearer the path becomes.",
-        "Be patient and trust that guidance will come when the time is right.",
-        "Gratitude for guidance received opens the door for more."
-    ];
+/* Light Mode Variables (Default) */
+:root {
+  --background-color: #f5f5f5;
+  --text-color: #2b2b2b;
+  --accent-dark: #d4af37; /* gold */
+  --accent-mid: #c0c0c0;  /* silver */
+  --primary: #d4af37;
+  --primary-hover: #b89d32;
+  --button-bg: #d4af37;
+  --nav-bg: #ffffff;
+  --shadow-light: 0 0 10px #999;
+  --shadow-bright: 0 0 20px rgba(0, 0, 0, 0.1);
+  --font-family: 'Arial', sans-serif;
+  --input-bg: #ffffff;
+  --input-hover-bg: #f0f0f0;
+  --input-border: #d4af37;
+  --highlight-glow: 0 0 8px #ffd700, 0 0 16px #ffd700, 0 0 24px #ffd700;
+}
 
-    const messageDisplay = document.getElementById('messageDisplay');
-    const messageButton = document.getElementById('messageButton');
-
-    function refreshMessage() {
-        const randomIndex = Math.floor(Math.random() * messages.length);
-
-        // Fade out
-        messageDisplay.style.opacity = 0;
-
-        setTimeout(() => {
-            // Update message
-            messageDisplay.innerHTML = `<p>${messages[randomIndex]}</p>`;
-
-            // Fade back in
-            messageDisplay.style.opacity = 1;
-
-            // Optional: Scroll into view after new message
-            messageDisplay.scrollIntoView({ behavior: 'smooth' });
-        }, 500); // Wait half a second
-    }
-
-    // Attach the refresh to the button
-    messageButton.addEventListener('click', refreshMessage);
-
-    // Immediately load a random message on page load
-    refreshMessage();
-	// Dream Journal functionality
-const saveDreamButton = document.getElementById('saveDreamButton');
-const dreamText = document.getElementById('dreamText');
-const dreamList = document.getElementById('dreamList');
-
-loadDreams();
-
-function loadDreams() {
-  const dreamList = document.getElementById('dreamList');
-  const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
-  dreamList.innerHTML = '';
-
-  if (!dreams.length) {
-    dreamList.innerHTML = `<li class="default-message glow">
-      No dreams recorded yet
-    </li>`;
-    return;
-  }
-
-  // sort newest→oldest
-  dreams.sort((a, b) => b.timestamp - a.timestamp);
-
-  dreams.forEach(d => {
-    const dt   = new Date(d.timestamp);
-    const time = dt.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-    const date = dt.toLocaleDateString();
-
-    const li = document.createElement('li');
-    li.className = 'dream-entry glow';
-    li.innerHTML = `
-      <span class="timestamp">${time}&nbsp;${date}</span>
-      <div class="text">${d.text}</div>
-    `;
-    dreamList.appendChild(li);
-  });
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --background-color: #0e0e0e;
+  --text-color: #ffffff;
+  --accent-dark: #4A148C; /* deep purple */
+  --accent-mid: #00bcd4;  /* bright cyan */
+  --primary: #4A148C;
+  --primary-hover: #7b1fa2;
+  --button-bg: #4A148C;
+  --nav-bg: #333;
+  --shadow-light: 0 0 10px #5f5f5f;
+  --shadow-bright: 0 0 20px rgba(255, 255, 255, 0.8);
+  --input-bg: #2a0d4b;
+  --input-hover-bg: #7b1fa2;
+  --input-border: #4A148C;
+  --highlight-glow: 0 0 8px #00ffe0, 0 0 16px #00ffe0, 0 0 24px #00ffe0;
 }
 
 
-
-
-// Save a new dream
-function saveDream() {
-    const text = dreamText.value.trim();
-    if (text !== '') {
-        const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
-        dreams.push(text);
-        localStorage.setItem('dreamJournal', JSON.stringify(dreams));
-        dreamText.value = '';
-        loadDreams();
-    }
+/* General reset */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  text-align: center;
 }
 
-saveDreamButton.addEventListener('click', saveDream);
+/* Navigation Bar */
+nav {
+  background: var(--nav-bg);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin: 20px 0;
+}
 
-window.showSection = function(id) {
-  document.querySelectorAll('.page-section')
-    .forEach(s => s.style.display = s.id === id ? 'flex' : 'none');
+nav button {
+  background-color: var(--accent-dark);
+  border: none;
+  padding: 15px 25px;
+  margin: 5px;
+  font-size: 18px;
+  border-radius: 8px;
+  color: var(--text-color);
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.3s, transform 0.3s;
+}
 
-  if (id === 'dreamJournalSection') {
-    loadDreams();
+nav button:hover {
+  background-color: var(--accent-mid);
+  transform: scale(1.05);
+}
+
+/* Kaelun'Vei's Message */
+#messageDisplay {
+  margin: 20px 0;
+  font-size: 22px;
+  line-height: 1.6;
+  transition: opacity 0.5s ease;
+  align-items: center;
+  margin-top: 20px;
+  box-shadow: var(--shadow-light);
+  padding: 12px 15px;
+  background-color:var(--button-bg);
+}
+
+/* Refresh Button */
+#messageButton {
+  background-color: var(--button-bg);
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: var(--text-color);
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: var(--shadow-light);
+  align-items: center;
+}
+
+#messageButton:hover {
+  background-color: var(--accent-mid);
+}
+
+/* Sigil */
+#sigil {
+  width: 150px;
+  height: auto;
+  margin-top: 20px;
+  filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #00ffff);
+}
+
+/* Glow effect for important items */
+.glow {
+  text-shadow: var(--highlight-glow);
+}
+
+#saveDreamButton {
+  background-color: var(--button-bg);
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 6px;
+  color: var(--text-color);
+  cursor: pointer;
+  margin-top: 20px;
+  box-shadow: var(--shadow-light);
+  align-items: center;
+}
+
+/* Header Styles */
+header {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Main Content Area */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 20px;
+  
+}
+
+/* Form Styles for Dream Journal and Horoscope */
+form {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: var(--shadow-bright);
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form label {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  display: block;
+  color: var(--text-color);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+form input, form textarea, form select {
+  font-size: 1.1em;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 15px;
+  border: 2px solid var(--input-border);
+  border-radius: 10px;
+  background: var(--input-bg);
+  color: var(--text-color);
+  box-shadow: 0 0 10px var(--primary-hover);
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+
+form input:hover, form textarea:hover, form select:hover {
+  background: var(--input-hover-bg);
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #fff;
+}
+
+/* Form Buttons */
+form button, #getHoroscopeButton {
+  font-size: 1.2em;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--text-color);
+  box-shadow: 0 0 10px #fff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  width: 100%;
+}
+
+form button:hover, #getHoroscopeButton:hover {
+  background: var(--primary-hover);
+  transform: scale(1.1);
+}
+
+form #getHoroscopeButton {
+  margin-top: 15px;
+}
+
+/* Horoscope and Dream Entries Box */
+#horoscopeDisplay {
+  font-size: 1.5em;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(237, 224, 175, 0.7);
+  box-shadow: var(--shadow-bright);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: none;
+}
+#dreamList{
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 20px 0;
+  display:block;
+  
+}
+/* Mobile Responsive Tweaks */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
   }
-};
-
-
-
-    // Navigation to switch sections
-    window.showSection = function(sectionId) {
-        const sections = document.querySelectorAll('.page-section');
-        sections.forEach(section => {
-            section.style.display = (section.id === sectionId) ? 'block' : 'none';
-        });
-    };
-	
-	const toggleButton = document.getElementById('toggleTheme');
-
-	toggleButton.addEventListener('click', () => {
-		if (document.body.getAttribute('data-theme') === 'dark') {
-		document.body.removeAttribute('data-theme');
-  } 	else {
-		document.body.setAttribute('data-theme', 'dark');
+  nav button {
+    margin: 5px 0;
   }
-});
+}
 
-// wherever you have a click listener:
-document.getElementById('messageButton').addEventListener('click', () => {
-  new Audio('Assets/sounds/chime.mp3').play();
-  refreshMessage();
-});
+@media (max-width: 480px) {
+  header {
+    font-size: 1.5em;
+  }
+  form input, form textarea, form select {
+    font-size: 1em;
+    padding: 8px;
+  }
+  form button {
+    font-size: 1.1em;
+    padding: 8px 15px;
+  }
+}
 
-});
+/* pop-in keyframes */
+@keyframes popIn {
+  0%   { transform: scale(0.8); opacity: 0; }
+  60%  { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* Base styling for each dream item */
+#dreamList li {
+  width: 100%;
+  list-style: none;
+  margin: 10px 0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background: var(--highlight-glow);
+  font-size: 1.1em;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,255,255,0.2);
+  animation: popIn 0.4s ease-out both;
+}
+
+/* Highlight the default-message differently */
+#dreamList li.default-message {
+  background: #444;
+  color: #ffd700;          /* golden text */
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px rgba(255,215,0,0.6);
+}
+#dreamText{
+  margin: 20px 0;
+  font-size: 22px;
+  line-height: 1.6;
+  transition: opacity 0.5s ease;
+  align-items: center;
+  margin-top: 20px;
+  box-shadow: var(--shadow-light);
+  padding: 12px 15px;
+  background-color:var(--button-bg);
+
+}
+.timestamp {
+  display: block;
+  font-size: 0.9em;
+  color: var(--accent-mid);
+  margin-bottom: 4px;
+}
+/* Dream Journal: two columns */
+#dreamJournalSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Left column: input + buttons */
+.dream-input-area {
+  flex: 1 1 300px;
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Right column: saved list */
+.dream-list-area {
+  flex: 1 1 300px;
+  max-width: 45%;
+}
+
+/* Tuck buttons under the textarea, centered */
+.dream-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* On narrow screens, stack them instead of side-by-side */
+@media (max-width: 600px) {
+  #dreamJournalSection {
+    flex-direction: column;
+  }
+  .dream-input-area, .dream-list-area {
+    max-width: 100%;
+  }
+}
+
+
