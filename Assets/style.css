@@ -57,6 +57,7 @@ nav button:hover {
     font-size: 22px;
     line-height: 1.6;
     transition: opacity 0.5s ease;
+    align-items: center;
 }
 
 /* Refresh Button */
@@ -70,6 +71,7 @@ nav button:hover {
     cursor: pointer;
     margin-top: 20px;
     box-shadow: 0 0 8px #5f5f5f;
+    align-items: center;
 }
 
 #messageButton:hover {
