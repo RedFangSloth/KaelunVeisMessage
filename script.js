@@ -52,53 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
         "Be patient and trust that guidance will come when the time is right.",
         "Gratitude for guidance received opens the door for more."
     ];
-	// Dream Journal functionality
-const saveDreamButton = document.getElementById('saveDreamButton');
-const dreamText = document.getElementById('dreamText');
-const dreamList = document.getElementById('dreamList');
-
-
-// Load Dreams 
-function loadDreams() {
-  const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
-  dreamList.innerHTML = '';
-
-  if (dreams.length === 0) {
-    // show default li
-    dreamList.innerHTML = `
-      <li class="default-message">
-        No dreams recorded yet
-      </li>
-    `;
-  } else {
-    // render each dream
-    dreams.forEach(dream => {
-      const li = document.createElement('li');
-      li.textContent = dream;
-      li.classList.add('dream-entry');
-      dreamList.appendChild(li);
-    });
-  }
-}
-
-
-// Save a new dream
-function saveDream() {
-    const text = dreamText.value.trim();
-    if (text !== '') {
-        const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
-        dreams.push(text);
-        localStorage.setItem('dreamJournal', JSON.stringify(dreams));
-        dreamText.value = '';
-        loadDreams();
-    }
-}
-
-saveDreamButton.addEventListener('click', saveDream);
-
-// Load dreams when page loads
-loadDreams();
-
 
     const messageDisplay = document.getElementById('messageDisplay');
     const messageButton = document.getElementById('messageButton');
@@ -126,6 +79,70 @@ loadDreams();
 
     // Immediately load a random message on page load
     refreshMessage();
+	// Dream Journal functionality
+const saveDreamButton = document.getElementById('saveDreamButton');
+const dreamText = document.getElementById('dreamText');
+const dreamList = document.getElementById('dreamList');
+
+loadDreams();
+
+function loadDreams() {
+  const dreamList = document.getElementById('dreamList');
+  const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
+  dreamList.innerHTML = '';
+
+  if (!dreams.length) {
+    dreamList.innerHTML = `<li class="default-message glow">
+      No dreams recorded yet
+    </li>`;
+    return;
+  }
+
+  // sort newest→oldest
+  dreams.sort((a, b) => b.timestamp - a.timestamp);
+
+  dreams.forEach(d => {
+    const dt   = new Date(d.timestamp);
+    const time = dt.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    const date = dt.toLocaleDateString();
+
+    const li = document.createElement('li');
+    li.className = 'dream-entry glow';
+    li.innerHTML = `
+      <span class="timestamp">${time}&nbsp;${date}</span>
+      <div class="text">${d.text}</div>
+    `;
+    dreamList.appendChild(li);
+  });
+}
+
+
+
+
+// Save a new dream
+function saveDream() {
+    const text = dreamText.value.trim();
+    if (text !== '') {
+        const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
+        dreams.push(text);
+        localStorage.setItem('dreamJournal', JSON.stringify(dreams));
+        dreamText.value = '';
+        loadDreams();
+    }
+}
+
+saveDreamButton.addEventListener('click', saveDream);
+
+window.showSection = function(id) {
+  document.querySelectorAll('.page-section')
+    .forEach(s => s.style.display = s.id === id ? 'flex' : 'none');
+
+  if (id === 'dreamJournalSection') {
+    loadDreams();
+  }
+};
+
+
 
     // Navigation to switch sections
     window.showSection = function(sectionId) {
@@ -143,8 +160,12 @@ loadDreams();
   } 	else {
 		document.body.setAttribute('data-theme', 'dark');
   }
-  
-  
-  
 });
+
+// wherever you have a click listener:
+document.getElementById('messageButton').addEventListener('click', () => {
+  new Audio('Assets/sounds/chime.mp3').play();
+  refreshMessage();
+});
+
 });
