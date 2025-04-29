@@ -36,17 +36,24 @@
 
 	<!-- Dream Journal -->
     <section id="dreamJournalSection" class="page-section" style="display:none;">
-        <h2 class="glow">Dream Journal</h2>
-        <textarea id="dreamText" class = glow rows="5" placeholder="Write your dream here..."></textarea>
-        <button id="saveDreamButton" class="glow">Save Dream</button>
-        <ul id="dreamList"></ul>  <!-- ← container for your saved items -->
+        <div class="dream-input-area">
+          <textarea
+            id="dreamText"
+            class="glow"
+            rows="5"
+            placeholder="Write your dream here…"
+          ></textarea>
+          <div class="dream-buttons">
+            <button id="saveDreamButton" class="glow">Save Dream</button>
+            <button id="clearDreamsButton" class="glow">Clear Dreams</button>
+          </div>
+        </div>
+        <div class="dream-list-area">
+          <ul id="dreamList"></ul>
+        </div>
       </section>
       
       
-      
-
-
-
         <!-- Daily Horoscope -->
         <section id="horoscopeSection" class="page-section" style="display:none;">
             <h2 class="glow">Daily Horoscope</h2>
