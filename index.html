@@ -17,29 +17,29 @@
 
     <!-- Navigation Buttons -->
     <nav style="text-align: center; margin: 20px;">
-        <button onclick="showSection('messageSection')">Kaelun'Vei's Message</button>
-        <button onclick="showSection('dreamJournalSection')">Dream Journal</button>
-        <button onclick="showSection('horoscopeSection')">Daily Horoscope</button>
-		<button id="toggleTheme">Toggle Theme</button>
+        <button class="glow" onclick="showSection('messageSection')">Kaelun'Vei's Message</button>
+        <button class="glow" onclick="showSection('dreamJournalSection')">Dream Journal</button>
+        <button class="glow" onclick="showSection('horoscopeSection')">Daily Horoscope</button>
+		<button class="glow" id="toggleTheme">Toggle Theme</button>
     </nav>
 
     <!-- Sections -->
     <main style="text-align: center; padding: 20px; font-size: 1.2em;">
         <!-- Kaelun'Vei's Message -->
         <section id="messageSection" class="page-section">
-            <h2>Today's Message</h2>
-            <div id="messageDisplay" style="margin: 20px auto; max-width: 600px;">
-                <p>✨ You are on the path of remembering. Trust your expansion. ✨</p>
+            <h2 class="glow">Today's Message</h2>
+            <div id="messageDisplay" class="glow" aria-live="polite" style="margin: 20px auto; max-width: 600px;">
+                <p>I am here!</p>
             </div>
-            <button id="messageButton" onclick="refreshMessage()">Refresh Message</button>
+            <button id="messageButton" onclick="refreshMessage()" class="glow">Refresh Message</button>
         </section>
 
 	<!-- Dream Journal -->
 	<section id="dreamJournalSection" class="page-section" style="display:none;">
 		<h2>Dream Journal</h2>
-		<textarea id="dreamText" rows="5" placeholder="Write your dream here..." style="width: 90%; max-width: 600px; padding: 10px; border-radius: 8px; background: #333; color: #ddd; border: none;"></textarea>
+		<textarea id="dreamText" class="glow" rows="5" placeholder="Write your dream here..."></textarea>
 		<br>
-		<button id="saveDreamButton" style="margin-top: 10px;">Save Dream</button>
+		<button id="saveDreamButton" class="glow">Save Dream</button>
 		<ul id="dreamList" style="list-style-type: none; padding: 0; margin-top: 20px;"></ul>
 	</section>
 
