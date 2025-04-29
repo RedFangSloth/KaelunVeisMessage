@@ -52,6 +52,43 @@ document.addEventListener('DOMContentLoaded', function() {
         "Be patient and trust that guidance will come when the time is right.",
         "Gratitude for guidance received opens the door for more."
     ];
+	// Dream Journal functionality
+const saveDreamButton = document.getElementById('saveDreamButton');
+const dreamText = document.getElementById('dreamText');
+const dreamList = document.getElementById('dreamList');
+
+// Load saved dreams from localStorage
+function loadDreams() {
+    const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
+    dreamList.innerHTML = '';
+    dreams.forEach(dream => {
+        const li = document.createElement('li');
+        li.textContent = dream;
+        li.style.background = '#333';
+        li.style.margin = '10px 0';
+        li.style.padding = '10px';
+        li.style.borderRadius = '8px';
+        dreamList.appendChild(li);
+    });
+}
+
+// Save a new dream
+function saveDream() {
+    const text = dreamText.value.trim();
+    if (text !== '') {
+        const dreams = JSON.parse(localStorage.getItem('dreamJournal')) || [];
+        dreams.push(text);
+        localStorage.setItem('dreamJournal', JSON.stringify(dreams));
+        dreamText.value = '';
+        loadDreams();
+    }
+}
+
+saveDreamButton.addEventListener('click', saveDream);
+
+// Load dreams when page loads
+loadDreams();
+
 
     const messageDisplay = document.getElementById('messageDisplay');
     const messageButton = document.getElementById('messageButton');
@@ -87,4 +124,15 @@ document.addEventListener('DOMContentLoaded', function() {
             section.style.display = (section.id === sectionId) ? 'block' : 'none';
         });
     };
+	
+	const toggleButton = document.getElementById('toggleTheme');
+
+	toggleButton.addEventListener('click', () => {
+		if (document.body.getAttribute('data-theme') === 'dark') {
+		document.body.removeAttribute('data-theme');
+  } 	else {
+		document.body.setAttribute('data-theme', 'dark');
+  }
+  
+});
 });
